@@ -1,1 +1,20 @@
-test
+Installer Raspbian strech
+Ajouter fichier "ssh" sans extension
+Editer le fichier config.txt qui se trouve dans la partition boot de la carte SD :
+  Ajouter :
+# Enable USB Boot for Jeedom
+program_usb_boot_mode=1
+
+Check de la prise en compte du paramètre :
+-< vcgencmd otp_dump | grep 17
+  réponse : 17:3020000a
+
+Configuration initiale :
+-< passwd
+-< sudo raspi-config
+-< sudo apt-get update && sudo apt-get upgrade -y
+
+Installation Jeedom :
+-< wget https://raw.githubusercontent.com/jeedom/core/stable/install/install.sh
+-< sudo chmod +x install.sh
+-< sudo ./install.sh
